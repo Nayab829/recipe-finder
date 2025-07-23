@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder </title>
+    <link rel=" icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <!-- logo -->
+        <div>
+            <a href="/" class="logo">🍳Recipe <span class="coral">Finder</span></a>
+        </div>
+        <!-- search box -->
+        <div class="search-box">
+            <form>
+                <input type="text" placeholder="Search recipes" aria-label="Search recipes">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+
+    </header>
+
+    <main>
+        <!-- recipes -->
+        <section class="recipe-section">
+            <div class="recipe-container">
+            </div>
+        </section>
+
+
+        <!-- featured section -->
+        <section class="feature-section"></section>
+
+        <!-- spinner -->
+        <div class="spinner-container hidden">
+            <div class="spinner" id="spinner" role="status" aria-label="loading..."></div>
+
+        </div>
+
+    </main>
+
+    <div class="modal hidden" role="dialog" aria-modal="true">
+        <div class="modal-content"> </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
