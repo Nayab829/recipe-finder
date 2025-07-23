@@ -2,6 +2,9 @@
 
 A clean and user-friendly web application built with **HTML**, **CSS**, and **JavaScript** that allows users to search for recipes by ingredients or keywords. It fetches data from a recipe API and displays cooking instructions, ingredients, and images in an organized way.
 
+## 🚀 Live Demo
+
+Check out the live version here: [Recipe Finder Live](https://myrecipefinderapp.netlify.app/)
 
 ## 🎨 Design & Layout
 
