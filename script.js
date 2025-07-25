@@ -35,7 +35,10 @@ const renderCard = (meal) => {
             <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
         </div>
         <h3 class="name">${meal.strMeal}</h3>
+        <div class="btn-box">
         <button class="recipe-btn" data-id="${meal.idMeal}">View recipe</button>
+        <button class="save-recipe-btn" data-meal='${JSON.stringify(meal)}'>Save recipe</button>
+        </div>
     `;
     return card;
 };
@@ -125,9 +128,8 @@ const loadFeaturedRecipe = async () => {
                     <p>${meal.strInstructions.slice(0, 200)}...</p>
                     <div class="btn-box">
                         <button class="recipe-btn" data-id="${meal.idMeal}">View Recipe</button>
-                        <button>
-                            <a href="${meal.strYoutube}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-                        </button>
+                               <button class="save-recipe-btn" data-meal='${JSON.stringify(meal)}'>Save recipe</button>
+
                     </div>
                 </div>
                 <div class="feature-img">
@@ -150,9 +152,42 @@ const loadFeaturedRecipe = async () => {
     }
 };
 
+// save recipe to db
+const saveRecipe = async (recipe) => {
+    try {
+        const res = await fetch("http://localhost:3000/favourites", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: recipe.strMeal,
+                image: recipe.strMealThumb
+            })
+        })
+        const data = await res.json();
+        console.log(data.message);
+        alert("Added to favourites")
+    } catch (error) {
+        console.log("Error saving recipe", error);
+        alert("Recipe not saved")
+
+    }
+
+}
+
 // ==========================================
 //             Event Listeners
 // ==========================================
+
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("save-recipe-btn")) {
+        const mealData = JSON.parse(
+            e.target.dataset.meal.replace(/&apos;/g, "'")
+        );
+        saveRecipe(mealData);
+    }
+});
 
 // Handle form submission (search)
 form.addEventListener("submit", function (e) {

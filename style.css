@@ -132,7 +132,7 @@ main {
 }
 
 .feature-text button,
-.recipe-btn {
+.recipe-btn,.save-recipe-btn {
     border: 0;
     outline: none;
     background-color: coral;
