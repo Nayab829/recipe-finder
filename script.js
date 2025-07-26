@@ -26,6 +26,8 @@ const showSpinner = () => spinnerContainer.classList.remove("hidden");
 // Hide loading spinner
 const hideSpinner = () => spinnerContainer.classList.add("hidden");
 
+
+
 // Render a recipe card
 const renderCard = (meal) => {
     const card = document.createElement("div");
@@ -99,10 +101,7 @@ const getSingleRecipe = async (id) => {
         modal.classList.remove("hidden");
         hideSpinner();
 
-        // Close modal on button click
-        document.querySelector(".close-btn").addEventListener("click", () => {
-            modal.classList.add("hidden");
-        });
+
     } catch (error) {
         console.error("Error while fetching recipe details", error);
         hideSpinner();
@@ -128,7 +127,7 @@ const loadFeaturedRecipe = async () => {
                     <p>${meal.strInstructions.slice(0, 200)}...</p>
                     <div class="btn-box">
                         <button class="recipe-btn" data-id="${meal.idMeal}">View Recipe</button>
-                               <button class="save-recipe-btn" data-meal='${JSON.stringify(meal)}'>Save recipe</button>
+                       <button class="save-recipe-btn" data-meal='${JSON.stringify(meal)}'>Save recipe</button>
 
                     </div>
                 </div>
@@ -140,11 +139,7 @@ const loadFeaturedRecipe = async () => {
 
         hideSpinner();
 
-        // Handle "View Recipe" button click
-        document.querySelector(".recipe-btn").addEventListener("click", (e) => {
-            const id = e.target.dataset.id;
-            getSingleRecipe(id);
-        });
+
     } catch (error) {
         console.error("Error loading featured recipe:", error);
         hideSpinner();
@@ -161,13 +156,14 @@ const saveRecipe = async (recipe) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+                idMeal: recipe.idMeal,
                 title: recipe.strMeal,
                 image: recipe.strMealThumb
             })
         })
         const data = await res.json();
+        showToast(data.message)
         console.log(data.message);
-        alert("Added to favourites")
     } catch (error) {
         console.log("Error saving recipe", error);
         alert("Recipe not saved")
@@ -176,9 +172,28 @@ const saveRecipe = async (recipe) => {
 
 }
 
+// show toast
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.className = "toast show";
+
+    setTimeout(() => {
+        toast.className = "toast"; // hide after 3 sec
+    }, 1000);
+}
+
+
 // ==========================================
 //             Event Listeners
 // ==========================================
+
+// Global event listener for closing modal
+modal.addEventListener("click", (e) => {
+    if (e.target.classList.contains("close-btn") || e.target === modal) {
+        modal.classList.add("hidden");
+    }
+});
 
 document.addEventListener("click", function (e) {
     if (e.target.classList.contains("save-recipe-btn")) {
@@ -201,7 +216,7 @@ form.addEventListener("submit", function (e) {
 });
 
 // Handle clicks on recipe cards
-resultBox.addEventListener("click", (e) => {
+document.addEventListener("click", (e) => {
     if (e.target.classList.contains("recipe-btn")) {
         const id = e.target.dataset.id;
         getSingleRecipe(id);

@@ -132,7 +132,9 @@ main {
 }
 
 .feature-text button,
-.recipe-btn,.save-recipe-btn {
+.recipe-btn,
+.save-recipe-btn,
+.btn {
     border: 0;
     outline: none;
     background-color: coral;
@@ -207,6 +209,8 @@ main {
     max-height: 80vh;
     border-radius: 5px;
     padding-block: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .close-btn {
@@ -268,6 +272,30 @@ main {
     }
 }
 
+.toast {
+    visibility: hidden;
+    min-width: 200px;
+    background-color: white;
+    border-bottom: 3px solid coral;
+    color: #333;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 4px;
+    position: fixed;
+    z-index: 1000;
+    top: 30px;
+    right: 10px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s, bottom 0.5s;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    top: 10px;
+}
+
 .hidden {
     display: none;
 }
@@ -278,7 +306,84 @@ main {
     margin-block: 10px;
 }
 
+.fav-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    border: 0;
+    outline: none;
+    background-color: coral;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 600;
+}
 
+.fav-heading {
+    text-align: center;
+
+}
+
+.fav-heading .coral {
+    display: inline-block;
+    margin-top: 50px;
+}
+
+.cards-container {
+    max-width: 900px;
+    margin-inline: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.fav-recipe-card {
+    width: 250px;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    transition: transform 0.2s;
+}
+
+.fav-recipe-card h3 {
+    font-size: 15px;
+    margin-top: 10px;
+    font-family: 500;
+}
+
+.fav-recipe-card button {
+    font-size: 13px;
+    /* padding: 10px; */
+    margin: auto;
+    text-wrap: no-wrap;
+}
+
+.fav-recipe-card:hover {
+    transform: scale(1.05);
+}
+
+.fav-recipe-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+
+.fav-cards-container p {
+    text-align: center;
+    font-size: 25px;
+    font-family: sans-serif;
+}
 
 /* ---------- Media Queries ---------- */
 
@@ -355,6 +460,20 @@ main {
 
     .search-box form {
         width: 90%;
+    }
+
+    .fav-btn {
+        top: 10px;
+        right: 10px;
+    }
+
+    .cards-container {
+        justify-content: center;
+    }
+
+    .fav-heading {
+        margin-top: 20px;
+        font-size: 25px;
     }
 }
 
