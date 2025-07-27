@@ -6,9 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favourites</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/* Responsive: Tablets & smaller */
+@media screen and (max-width: 768px) {
+  
+    .footer{
+        position: static;
+    }
+}
+
+    </style>
 </head>
 
 <body>
+      <nav>
+            <!-- logo -->
+            <div>
+                <a href="/" class="logo">🍳Recipe <span class="coral">Finder</span></a>
+            </div>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/favourites.html">Favourites</a>
+                </li>
+            </ul>
+        </nav>
     <h1 class="fav-heading">❤️ My Favorite <div class="coral">Recipes</div>
     </h1>
     <div class="cards-container">
@@ -22,6 +51,9 @@
         <div class="modal-content"> </div>
     </div>
     <div id="toast" class="toast">Recipe Saved!</div>
+     <footer class="footer">
+        <p>&copy; 2025 Recipe Finder. Made with ❤️ by Nayab</p>
+    </footer>
 
     <script src="script.js"></script>
     <script src="favourite.js"></script>

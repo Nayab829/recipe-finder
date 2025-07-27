@@ -65,7 +65,7 @@ const renderContent = (meal) => {
         </div>
     `;
 
-    document.body.appendChild(card);
+    document.querySelector("#content").appendChild(card);
 };
 
 

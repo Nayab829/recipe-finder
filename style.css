@@ -8,6 +8,7 @@
 body {
     background-color: #fff;
     width: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
 }
 
@@ -17,15 +18,12 @@ a {
 }
 
 /* ---------- Header ---------- */
-header {
+
+.search-box {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
     padding: 100px;
-    margin: auto;
-    background: papayawhip;
 }
 
 .error {
@@ -38,8 +36,42 @@ header {
     color: coral;
 }
 
-header .logo {
-    font-size: 50px;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 20%;
+    margin: auto;
+    padding-block: 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: papayawhip;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    z-index: 99;
+}
+
+ul li a {
+    color: #555;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    &:hover{
+        color: coral;
+    }
+}
+
+ul {
+    display: flex;
+    gap: 20px;
+}
+
+ul li {
+    list-style: none;
+
+}
+
+nav .logo {
+    font-size: 30px;
     font-weight: 600;
     color: #333;
 }
@@ -80,6 +112,7 @@ main {
 .feature-section {
     padding-block: 50px;
     padding-inline: 30px;
+    margin-bottom: 20px;
 
 }
 
@@ -121,7 +154,7 @@ main {
 }
 
 .feature-text h2 {
-    font-size: 30px;
+    font-size: 20px;
     color: #444;
     font-weight: 600;
 }
@@ -384,7 +417,21 @@ main {
     font-size: 25px;
     font-family: sans-serif;
 }
+.footer {
+  background-color: papayawhip;
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin-top: 50px;
+  
+}
+
+.footer p {
+  margin: 0;
+}
 /* ---------- Media Queries ---------- */
 
 /* Large Desktops */
@@ -397,8 +444,9 @@ main {
 
 /* Desktops & Laptops */
 @media screen and (max-width: 1200px) {
-    header {
-        padding: 40px 20px;
+   
+    nav{
+        padding-inline: 10px ;
     }
 
     header .logo {
@@ -419,6 +467,15 @@ main {
 
 /* Tablets */
 @media screen and (max-width: 992px) {
+    nav .logo{
+        font-size: 20px;
+    }
+    nav ul {
+        font-size: 14px;
+    }
+    .search-box{
+        padding: 20px;
+    }
     .recipe-container {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -437,7 +494,7 @@ main {
     }
 
     .feature-text h2 {
-        font-size: 35px;
+        font-size: 25px;
         font-weight: 500;
     }
 

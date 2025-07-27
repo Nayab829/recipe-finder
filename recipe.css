@@ -55,6 +55,11 @@ a {
     cursor: pointer;
     font-weight: 600;
 }
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
 /* Responsive: Tablets & smaller */
 @media screen and (max-width: 768px) {
@@ -75,5 +80,8 @@ a {
 
     .recipe-section > div {
         width: 100%;
+    }
+    .footer{
+        position: static;
     }
 }
