@@ -3,7 +3,6 @@
 ## 🔍 Project Overview
 **Recipe Finder** is a full-stack web application that allows users to search recipes by name, view detailed cooking instructions, and save their favorite meals. The goal of this project was to strengthen my frontend and backend skills by working with real APIs, connecting to a database, and building a complete application workflow.
 
-This project was part of my **1-month self-led internship**, where I worked daily on planning, developing, and deploying a real-world web app.
 
 ---
 
@@ -36,8 +35,7 @@ This project was part of my **1-month self-led internship**, where I worked dail
 - 📦 MongoDB Integration for storing favorite meals  
 - ⏳ Loading Spinner while fetching data  
 - 📭 Empty States when no data is found  
-- 📱 Responsive Design for mobile and desktop  
-- 🔗 Navbar for smooth navigation between pages  
+- 📱 Responsive Design for mobile and desktop   
 - 🧠 ARIA Attributes added for accessibility  
 
 ---
