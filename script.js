@@ -26,7 +26,25 @@ const showSpinner = () => spinnerContainer.classList.remove("hidden");
 // Hide loading spinner
 const hideSpinner = () => spinnerContainer.classList.add("hidden");
 
+// render modal
+const renderModal = (meal) => {
+    const card = document.createElement("div");
+    card.classList.add("modal-content");
+    card.innerHTML = `
+            <button class="close-btn">+</button>
+            <h1>${meal.strMeal}</h1>
+            <span>Instructions:</span>
+            <p>${meal.strInstructions}</p>
+            <button class="recipe-btn">
+                <a href="${meal.strYoutube}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+            </button>
+        `;
 
+    modal.appendChild(card);
+    modal.classList.remove("hidden");
+    hideSpinner();
+
+}
 
 // Render a recipe card
 const renderCard = (meal) => {
@@ -84,22 +102,7 @@ const getSingleRecipe = async (id) => {
         const res = await fetch(GET_BY_ID + id);
         const data = await res.json();
         const meal = data.meals[0];
-
-        const card = document.createElement("div");
-        card.classList.add("modal-content");
-        card.innerHTML = `
-            <button class="close-btn">+</button>
-            <h1>${meal.strMeal}</h1>
-            <span>Instructions:</span>
-            <p>${meal.strInstructions}</p>
-            <button class="recipe-btn">
-                <a href="${meal.strYoutube}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-            </button>
-        `;
-
-        modal.appendChild(card);
-        modal.classList.remove("hidden");
-        hideSpinner();
+        renderModal(meal);
 
 
     } catch (error) {
